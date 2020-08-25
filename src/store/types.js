@@ -1,0 +1,5 @@
+export const SELECT_MENU = 'select_menu'
+export const SELECT_TAB = 'select_tab'
+export const CLOSE_TAB = 'close_tab'
+export const ACTIVE_PATH = 'active_path'
+export const CLOSE_MENU = 'close_menu'
