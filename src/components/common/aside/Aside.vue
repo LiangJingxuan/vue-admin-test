@@ -1,49 +1,37 @@
 <template>
-  <el-menu
-    :default-active="activePath"
-    class="el-menu-vertical-demo"
-    background-color="#383546"
-    text-color="#8b9199"
-    active-text-color="#ffd04b"
-    :collapse="isCollapse"
-  >
-    <el-menu-item
-      :index="item.path"
-      v-for="item in menuItem"
-      :key="item.path"
-      @click="clickMenu(item)"
-    >
-      <i :class="`el-icon-${item.icon}`"></i>
-      <span slot="title">{{item.label}}</span>
-    </el-menu-item>
+<el-menu :default-active="activePath" class="el-menu-vertical-demo" background-color="#383546" text-color="#8b9199" active-text-color="#ffd04b" :collapse="isCollapse">
+  <el-menu-item :index="item.path" v-for="item in menuItem" :key="item.path" @click="clickMenu(item)">
+    <i :class="`el-icon-${item.icon}`"></i>
+    <span slot="title">{{item.label}}</span>
+  </el-menu-item>
 
-    <el-submenu :index="item.path" v-for="item in submenuItem" :key="item.path">
-      <template slot="title">
-        <i :class="`el-icon-${item.icon}`"></i>
-        <span>{{item.label}}</span>
-      </template>
-      <el-menu-item-group>
-        <el-menu-item
-          :index="subitem.path"
-          v-for="subitem in item.children"
-          :key="subitem.path"
-          @click="clickMenu(subitem)"
-        >{{subitem.label}}</el-menu-item>
-      </el-menu-item-group>
-    </el-submenu>
-  </el-menu>
+  <el-submenu :index="item.path" v-for="item in submenuItem" :key="item.path">
+    <template slot="title">
+      <i :class="`el-icon-${item.icon}`"></i>
+      <span>{{item.label}}</span>
+    </template>
+    <el-menu-item-group>
+      <el-menu-item :index="subitem.path" v-for="subitem in item.children" :key="subitem.path" @click="clickMenu(subitem)">{{subitem.label}}</el-menu-item>
+    </el-menu-item-group>
+  </el-submenu>
+</el-menu>
 </template>
 
 <script>
-import { SELECT_MENU, SELECT_TAB, ACTIVE_PATH } from "store/types";
-import { mapMutations } from "vuex";
+import {
+  SELECT_MENU,
+  SELECT_TAB,
+  ACTIVE_PATH
+} from "store/types";
+import {
+  mapMutations
+} from "vuex";
 
 export default {
   name: "Aside",
   data() {
     return {
-      menu: [
-        {
+      menu: [{
           path: "/",
           label: "首页",
           icon: "s-home",
@@ -62,13 +50,11 @@ export default {
           path: "/page",
           label: "其他",
           icon: "video-play",
-          children: [
-            {
-              path: "/page1",
-              label: "页面1",
-              icon: "setting",
-            },
-          ],
+          children: [{
+            path: "/page1",
+            label: "页面1",
+            icon: "setting",
+          }, ],
         },
       ],
     };
@@ -112,10 +98,12 @@ export default {
   height: 100%;
   border: none;
 }
+
 .el-menu-item,
 .el-submenu {
   text-align: left;
 }
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
