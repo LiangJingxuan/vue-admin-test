@@ -1,7 +1,10 @@
 <template>
-<div class="mangage">
+<div class="manage">
   <div class="manage-header">
-    <common-form></common-form>
+    <el-button type="primary">+ 新增</el-button>
+    <common-form inline :formLabel="formLabel" :form="searchForm">
+      <el-button type="primary">搜索</el-button>
+    </common-form>
   </div>
   <div class="manage-content">
     <common-table></common-table>
@@ -18,7 +21,18 @@ export default {
   components: {
     CommonForm,
     CommonTable
-  }
+  },
+  data() {
+    return {
+      searchForm: {
+        keyword: ''
+      },
+      formLabel: [{
+        model: 'keyword',
+        label: ''
+      }]
+    }
+  },
 }
 </script>
 
