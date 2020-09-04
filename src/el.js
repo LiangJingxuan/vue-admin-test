@@ -25,6 +25,12 @@ import {
   Input,
   Select,
   Option,
+  Pagination,
+  Loading,
+  Dialog,
+  DatePicker,
+  Message,
+  MessageBox,
 } from 'element-ui'
 
 Vue.use(Container)
@@ -52,3 +58,12 @@ Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Pagination)
+Vue.use(Dialog)
+Vue.use(DatePicker)
+Vue.use(Loading.directive)
+
+Vue.prototype.$loading = Loading.service
+Vue.prototype.$message = Message;
+Vue.prototype.$msgbox = MessageBox;
+Vue.prototype.$confirm = MessageBox.confirm;

@@ -17,17 +17,21 @@ Vue.use(VueRouter)
 //     { path: '/detail/:id', component: Detail }
 // ]
 const routes = [
-  { 
-    path: '/', 
-    component: ()=>import('views/Main'),
-    children: [
-      { path: '/', component: ()=>import('views/home/Home') },
-      { path: '/video', component: ()=>import('views/video/Video') },
-      { path: '/user', component: ()=>import('views/user/User') },
-      { path: '/page1', component: ()=>import('views/other/Other') },
-    ]
+  // { 
+  //   path: '/', 
+  //   component: ()=>import('views/Main'),
+  //   children: [
+  //     { path: '/', component: ()=>import('views/home/Home') },
+  //     { path: '/video', component: ()=>import('views/video/Video') },
+  //     { path: '/user', component: ()=>import('views/user/User') },
+  //     { path: '/page1', component: ()=>import('views/other/Other') },
+  //   ]
     
-  },
+  // },
+  {
+    path: '/login',
+    component: () => import('views/login/Login')
+  }
 ]
 const router = new VueRouter({
   routes,

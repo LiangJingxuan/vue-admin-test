@@ -11,7 +11,10 @@
       <span>{{item.label}}</span>
     </template>
     <el-menu-item-group>
-      <el-menu-item :index="subitem.path" v-for="subitem in item.children" :key="subitem.path" @click="clickMenu(subitem)">{{subitem.label}}</el-menu-item>
+      <el-menu-item :index="subitem.path" v-for="subitem in item.children" :key="subitem.path" @click="clickMenu(subitem)">{{subitem.label}}
+        <i :class="`el-icon-${subitem.icon}`"></i>
+        <span>{{subitem.label}}</span>
+      </el-menu-item>
     </el-menu-item-group>
   </el-submenu>
 </el-menu>
@@ -72,6 +75,9 @@ export default {
     isCollapse() {
       return this.$store.state.tab.isCollapse;
     },
+    menu() {
+      return this.$store.state.tab.menu;
+    }
   },
   methods: {
     ...mapMutations({
